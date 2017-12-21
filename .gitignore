@@ -1,3 +1,9 @@
+ut/
+node_modules/
+node-*/
+
+*.tar.xz
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
