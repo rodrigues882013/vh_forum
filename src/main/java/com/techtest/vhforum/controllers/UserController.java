@@ -1,6 +1,8 @@
 package com.techtest.vhforum.controllers;
 
+import com.techtest.vhforum.dao.UserDAO;
 import com.techtest.vhforum.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +10,9 @@ import java.util.List;
 
 @RestController
 public class UserController implements BaseController<User>{
+
+    @Autowired
+    private UserDAO userDao;
 
     @Override
     @GetMapping(value = "${api.endpoints.users/{id}}")
