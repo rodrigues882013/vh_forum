@@ -1,11 +1,12 @@
 package com.techtest.vhforum.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class BasePost {
+public class BasePost extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -33,11 +34,13 @@ public abstract class BasePost {
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public BasePost(String text, User user) {
+    public BasePost(String text, User user, Date created, Date lastUpdate) {
         this.text = text;
         this.user = user;
         this.downVote = 0;
         this.upVote = 0;
+        super.created = created;
+        super.lastUpdate = lastUpdate;
     }
 
     public Integer getId() {

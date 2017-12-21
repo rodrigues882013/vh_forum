@@ -30,4 +30,12 @@ public class ActionsService <T, E extends Serializable> {
             return false;
         }
     }
+
+    public T update(CrudRepository<T, E> dao, T entity, E id){
+        if (delete(dao, id)){
+            return dao.save(entity);
+        }
+
+        return null;
+    }
 }

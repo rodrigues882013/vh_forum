@@ -1,6 +1,7 @@
 package com.techtest.vhforum.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -19,8 +20,8 @@ public class Topic extends BasePost {
     @Column
     private Double relevancy;
 
-    public Topic(String text, User user, List<Reply> replies) {
-        super(text, user);
+    public Topic(String text, User user, List<Reply> repliesDate, Date created, Date lastUpdate) {
+        super(text, user, lastUpdate, created);
         this.replies = replies;
         this.locked = false;
         this.relevancy = (super.upVote / (double) (Math.abs(super.downVote) + super.upVote)) * 100;

@@ -1,19 +1,14 @@
 package com.techtest.vhforum.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 5)
-    @Column(name = "id")
-    private Integer id;
+public class User extends BaseEntity{
 
     @Column(name = "first_name")
     private String firstName;
@@ -129,26 +124,51 @@ public class User {
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+    public User(String name, Date created, Date lastUpdate,
+                String firstName, String lastName, String email,
+                String password, String username, Boolean active, List<BasePost> topics, List<BasePost> replies) {
+
+        super(name, created, lastUpdate);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.active = active;
+        this.topics = topics;
+        this.replies = replies;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         User user = (User) o;
 
-        if (!id.equals(user.id)) return false;
-        if (!email.equals(user.email)) return false;
-        return username.equals(user.username);
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (active != null ? !active.equals(user.active) : user.active != null) return false;
+        if (topics != null ? !topics.equals(user.topics) : user.topics != null) return false;
+        return replies != null ? replies.equals(user.replies) : user.replies == null;
     }
-
-    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + username.hashCode();
+        int result = super.hashCode();
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (active != null ? active.hashCode() : 0);
+        result = 31 * result + (topics != null ? topics.hashCode() : 0);
+        result = 31 * result + (replies != null ? replies.hashCode() : 0);
         return result;
     }
-
 }

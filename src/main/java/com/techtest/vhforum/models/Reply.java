@@ -1,6 +1,7 @@
 package com.techtest.vhforum.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -11,8 +12,8 @@ public class Reply extends BasePost {
     @JoinColumn(name="topic_id")
     private Topic topic;
 
-    public Reply(String text, User user, Topic topic) {
-        super(text, user);
+    public Reply(String text, User user, Topic topic, Date created, Date lastUpdate) {
+        super(text, user, lastUpdate, created);
         this.topic = topic;
     }
 
