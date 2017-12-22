@@ -2,6 +2,7 @@ package com.techtest.vhforum.controllers;
 
 import com.techtest.vhforum.dao.UserDAO;
 import com.techtest.vhforum.models.User;
+import com.techtest.vhforum.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,18 @@ import java.util.List;
 public class UserController implements BaseController<User>{
 
     @Autowired
-    private UserDAO userDao;
+    private UserService service;
 
     @Override
     @GetMapping(value = "${api.endpoints.users/{id}}")
     public ResponseEntity<User> get(@PathVariable("id") Integer id) {
-        return null;
+        return service.findOne(id);
     }
 
     @Override
     @PostMapping(value = "${api.endpoints.users}")
     public ResponseEntity<User> create(@RequestBody User entity) {
-        return null;
+        return service.create(entity);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class UserController implements BaseController<User>{
     @Override
     @GetMapping(value = "${api.endpoints.users}")
     public ResponseEntity<List<User>> list() {
-        return null;
+        return service.findAll();
     }
 
     @Override

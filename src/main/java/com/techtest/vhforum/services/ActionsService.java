@@ -1,6 +1,8 @@
 package com.techtest.vhforum.services;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -9,16 +11,16 @@ import java.util.List;
 @Service
 public class ActionsService <T, E extends Serializable> {
 
-    public T insert(T entity, CrudRepository<T, E> dao){
-        return dao.save(entity);
+    public ResponseEntity<T> insert(T entity, CrudRepository<T, E> dao){
+        return new ResponseEntity<T>(dao.save(entity), HttpStatus.CREATED);
     }
 
-    public T findOne(CrudRepository<T, E> dao, E id){
-        return dao.findOne(id);
+    public ResponseEntity<T> findOne(CrudRepository<T, E> dao, E id){
+        return new ResponseEntity<T>(dao.findOne(id), HttpStatus.OK);
     }
 
-    public List<T> findAll(CrudRepository<T, E> dao){
-        return (List<T>) dao.findAll();
+    public ResponseEntity<List<T>> findAll(CrudRepository<T, E> dao){
+        return new ResponseEntity<List<T>> ((List<T>) dao.findAll(), HttpStatus.OK);
     }
 
     public boolean delete(CrudRepository<T, E> dao, E id){
@@ -31,9 +33,9 @@ public class ActionsService <T, E extends Serializable> {
         }
     }
 
-    public T update(CrudRepository<T, E> dao, T entity, E id){
+    public ResponseEntity<T> update(CrudRepository<T, E> dao, T entity, E id){
         if (delete(dao, id)){
-            return dao.save(entity);
+            return new ResponseEntity<T>(dao.save(entity), HttpStatus.OK);
         }
 
         return null;

@@ -3,6 +3,7 @@ package com.techtest.vhforum.services;
 import com.techtest.vhforum.dao.UserDAO;
 import com.techtest.vhforum.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +17,11 @@ public class UserService {
     @Autowired
     private ActionsService<User, Integer> actionsService;
 
-    public User create(User u){
+    public ResponseEntity<User> create(User u){
         return actionsService.insert(u, userDao);
     }
 
-    public List<User> findAll(){
+    public ResponseEntity<List<User>> findAll(){
         return actionsService.findAll(userDao);
     }
 
@@ -28,7 +29,7 @@ public class UserService {
         return actionsService.delete(userDao, id);
     }
 
-    public User findOne(Integer id){
+    public ResponseEntity<User> findOne(Integer id){
         return actionsService.findOne(userDao, id);
     }
 }

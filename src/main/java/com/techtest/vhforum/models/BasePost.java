@@ -71,16 +71,16 @@ public class BasePost extends BaseEntity{
         return upVote;
     }
 
-    public void setUpVote(Integer upVote) {
-        this.upVote += upVote;
+    public void setUpVote() {
+        this.upVote += 1;
     }
 
     public Integer getDownVote() {
         return downVote;
     }
 
-    public void setDownVote(Integer downVote) {
-        this.downVote -= downVote;
+    public void setDownVote() {
+        this.downVote -= 1;
     }
 
     @Override
