@@ -13,9 +13,6 @@ public class BaseEntity {
     @Column(name = "id")
     protected Integer id;
 
-    @Column(name = "name")
-    protected String name;
-
     @Temporal(TemporalType.DATE)
     protected Date created;
 
@@ -29,16 +26,10 @@ public class BaseEntity {
 
     public BaseEntity() {
         super();
-    }
-
-    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-    public BaseEntity(String name, Date created, Date lastUpdate) {
-        this.name = name;
         this.created = new Date();
-        this.lastUpdate = new Date();
     }
 
+   
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     public Integer getId() {
@@ -48,19 +39,8 @@ public class BaseEntity {
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     public void setId(Integer id) {
+        setLastUpdate();
         this.id = id;
-    }
-
-    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-    public String getName() {
-        return name;
-    }
-
-    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -72,6 +52,7 @@ public class BaseEntity {
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     public void setCreated(Date created) {
+        setLastUpdate();
         this.created = created;
     }
 
@@ -83,8 +64,7 @@ public class BaseEntity {
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public void setLastUpdate(Date lastUpdate) {
-
+    public void setLastUpdate() {
         this.lastUpdate = new Date();
     }
 

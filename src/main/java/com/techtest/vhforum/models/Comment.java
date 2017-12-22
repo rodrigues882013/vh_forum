@@ -16,8 +16,8 @@ public class Comment extends BasePost {
         super();
     }
 
-    public Comment(String text, User user, Topic topic, Date created, Date lastUpdate) {
-        super(text, user, lastUpdate, created);
+    public Comment(String text, User user, Topic topic) {
+        super(text, user, null);
         this.topic = topic;
     }
 

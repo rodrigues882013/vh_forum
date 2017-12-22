@@ -120,16 +120,19 @@ public class User extends BaseEntity{
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public User() { }
+    public User() { 
+        super();
+    }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
     public User(String name, Date created, Date lastUpdate,
                 String firstName, String lastName, String email,
-                String password, String username, Boolean active, List<BasePost> topics, List<BasePost> comments) {
+                String password, String username, Boolean active, 
+                List<BasePost> topics, List<BasePost> comments) {
 
-        super(name, created, lastUpdate);
+        super(name);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

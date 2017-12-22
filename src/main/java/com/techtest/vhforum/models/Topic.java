@@ -24,8 +24,8 @@ public class Topic extends BasePost {
         super();
     }
 
-    public Topic(String text, User user, List<Comment> repliesDate, Date created, Date lastUpdate) {
-        super(text, user, lastUpdate, created);
+    public Topic(String text, User user, List<Comment> repliesDate, String title) {
+        super(text, user, title);
         this.comments = comments;
         this.locked = false;
         this.relevancy = (super.upVote / (double) (Math.abs(super.downVote) + super.upVote)) * 100;
