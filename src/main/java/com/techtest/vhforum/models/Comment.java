@@ -5,14 +5,18 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "replies")
-public class Reply extends BasePost {
+@Table(name = "comments")
+public class Comment extends BasePost {
 
     @ManyToOne(targetEntity = Topic.class)
     @JoinColumn(name="topic_id")
     private Topic topic;
 
-    public Reply(String text, User user, Topic topic, Date created, Date lastUpdate) {
+    public Comment(){
+        super();
+    }
+
+    public Comment(String text, User user, Topic topic, Date created, Date lastUpdate) {
         super(text, user, lastUpdate, created);
         this.topic = topic;
     }
@@ -37,7 +41,7 @@ public class Reply extends BasePost {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Reply reply = (Reply) o;
+        Comment reply = (Comment) o;
 
         return topic != null ? topic.equals(reply.topic) : reply.topic == null;
     }

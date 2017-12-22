@@ -17,19 +17,19 @@ public class PostController implements BaseController<BasePost> {
 
 
     @Override
-    @GetMapping(value = "${api.endpoints.posts/{id}}")
+    @GetMapping(value = "${api.endpoints.posts}/{id}")
     public ResponseEntity<BasePost> get(@PathVariable("id") Integer id) {
         return service.findOne(id);
     }
 
     @Override
-    @PostMapping(value = "${api.endpoints.posts")
+    @PostMapping(value = "${api.endpoints.posts}")
     public ResponseEntity<BasePost> create(@RequestBody BasePost entity) {
         return service.create(entity);
     }
 
     @Override
-    @PutMapping(value = "${api.endpoints.posts/{id}}")
+    @PutMapping(value = "${api.endpoints.posts}/{id}")
     public ResponseEntity<BasePost> update(@RequestBody BasePost entity, @PathVariable("id") Integer id) {
         return null;
     }
@@ -41,13 +41,13 @@ public class PostController implements BaseController<BasePost> {
     }
 
     @Override
-    @DeleteMapping(value = "${api.endpoints.posts/{id}}")
+    @DeleteMapping(value = "${api.endpoints.posts}/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
         return null;
     }
 
 
-    @PostMapping(value = "${api.endpoints.posts/{id}/vote}")
+    @PostMapping(value = "${api.endpoints.posts}/{id}/vote")
     public ResponseEntity<?> vote(@PathVariable("id") Integer id, @RequestBody Map<String, Integer> payload){
         return service.vote(payload, id);
     }

@@ -16,7 +16,7 @@ public class UserController implements BaseController<User>{
     private UserService service;
 
     @Override
-    @GetMapping(value = "${api.endpoints.users/{id}}")
+    @GetMapping(value = "${api.endpoints.users}/{id}")
     public ResponseEntity<User> get(@PathVariable("id") Integer id) {
         return service.findOne(id);
     }

@@ -8,11 +8,6 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BasePost extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "id")
-    protected Integer id;
-
     @Column(name = "text")
     protected String text;
 

@@ -28,11 +28,11 @@ public class User extends BaseEntity{
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany(cascade = ALL, mappedBy = "topics", targetEntity = Topic.class)
+    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
     private List<BasePost> topics;
 
-    @OneToMany(cascade = ALL, mappedBy = "replies", targetEntity = Reply.class)
-    private List<BasePost> replies;
+    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
+    private List<BasePost> comments;
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -127,7 +127,7 @@ public class User extends BaseEntity{
 
     public User(String name, Date created, Date lastUpdate,
                 String firstName, String lastName, String email,
-                String password, String username, Boolean active, List<BasePost> topics, List<BasePost> replies) {
+                String password, String username, Boolean active, List<BasePost> topics, List<BasePost> comments) {
 
         super(name, created, lastUpdate);
         this.firstName = firstName;
@@ -137,7 +137,7 @@ public class User extends BaseEntity{
         this.username = username;
         this.active = active;
         this.topics = topics;
-        this.replies = replies;
+        this.comments = comments;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class User extends BaseEntity{
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (active != null ? !active.equals(user.active) : user.active != null) return false;
         if (topics != null ? !topics.equals(user.topics) : user.topics != null) return false;
-        return replies != null ? replies.equals(user.replies) : user.replies == null;
+        return comments != null ? comments.equals(user.comments) : user.comments == null;
     }
 
     @Override
@@ -168,7 +168,7 @@ public class User extends BaseEntity{
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (active != null ? active.hashCode() : 0);
         result = 31 * result + (topics != null ? topics.hashCode() : 0);
-        result = 31 * result + (replies != null ? replies.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
         return result;
     }
 }

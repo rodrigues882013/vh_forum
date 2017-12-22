@@ -9,8 +9,7 @@ import java.util.Date;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entity_seq")
-    @SequenceGenerator(name = "entity_seq", sequenceName = "entity_seq", allocationSize = 5)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     protected Integer id;
 

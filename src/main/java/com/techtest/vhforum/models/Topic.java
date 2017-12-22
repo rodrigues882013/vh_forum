@@ -11,8 +11,8 @@ import static javax.persistence.CascadeType.ALL;
 public class Topic extends BasePost {
 
 
-    @OneToMany(cascade = ALL, mappedBy = "replies", targetEntity = Reply.class)
-    private List<Reply> replies;
+    @OneToMany(cascade = ALL, mappedBy = "topic", targetEntity = Comment.class)
+    private List<Comment> comments;
 
     @Column(name = "locked")
     private boolean locked;
@@ -20,23 +20,27 @@ public class Topic extends BasePost {
     @Column
     private Double relevancy;
 
-    public Topic(String text, User user, List<Reply> repliesDate, Date created, Date lastUpdate) {
+    public Topic(){
+        super();
+    }
+
+    public Topic(String text, User user, List<Comment> repliesDate, Date created, Date lastUpdate) {
         super(text, user, lastUpdate, created);
-        this.replies = replies;
+        this.comments = comments;
         this.locked = false;
         this.relevancy = (super.upVote / (double) (Math.abs(super.downVote) + super.upVote)) * 100;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public List<Reply> getReplies() {
-        return replies;
+    public List<Comment> getComments() {
+        return comments;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public void setReplies(List<Reply> replies) {
-        this.replies = replies;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -78,7 +82,7 @@ public class Topic extends BasePost {
         Topic topic = (Topic) o;
 
         if (locked != topic.locked) return false;
-        return replies != null ? replies.equals(topic.replies) : topic.replies == null;
+        return comments != null ? comments.equals(topic.comments) : topic.comments == null;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -86,7 +90,7 @@ public class Topic extends BasePost {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (replies != null ? replies.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
         result = 31 * result + (locked ? 1 : 0);
         return result;
     }
