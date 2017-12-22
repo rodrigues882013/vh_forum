@@ -22,7 +22,7 @@ public class UserController implements BaseController<User>{
     }
 
     @Override
-    @PostMapping(value = "${api.endpoints.users}")
+    @PostMapping(value = "${api.endpoints.register}")
     public ResponseEntity<User> create(@RequestBody User entity) {
         return service.create(entity);
     }

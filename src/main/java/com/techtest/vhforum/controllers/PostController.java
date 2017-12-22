@@ -2,6 +2,7 @@ package com.techtest.vhforum.controllers;
 
 import com.techtest.vhforum.models.BasePost;
 import com.techtest.vhforum.services.PostService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

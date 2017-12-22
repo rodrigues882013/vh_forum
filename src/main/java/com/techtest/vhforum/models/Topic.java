@@ -17,6 +17,10 @@ public class Topic extends BasePost {
     @Column(name = "locked")
     private boolean locked;
 
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name="category_id")
+    private Category category;
+
     @Column
     private Double relevancy;
 
@@ -59,16 +63,34 @@ public class Topic extends BasePost {
         return upVote;
     }
 
+    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
     public void setUpVote(Integer upVote) {
         this.upVote = upVote;
     }
+
+    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     public Double getRelevancy() {
         return relevancy;
     }
 
+    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
     public void setRelevancy(Double relevancy) {
         this.relevancy = relevancy;
+    }
+
+    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    public String getCategory() {
+        return name;
+    }
+
+    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
