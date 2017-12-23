@@ -1,10 +1,7 @@
 package com.techtest.vhforum.controllers;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.techtest.vhforum.dao.UserDAO;
 import com.techtest.vhforum.models.Topic;
 import com.techtest.vhforum.models.User;
-import com.techtest.vhforum.models.View;
 import com.techtest.vhforum.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
