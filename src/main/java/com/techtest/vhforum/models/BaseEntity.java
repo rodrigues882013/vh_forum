@@ -1,5 +1,7 @@
 package com.techtest.vhforum.models;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.util.Date;
 

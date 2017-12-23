@@ -1,5 +1,8 @@
 package com.techtest.vhforum.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -31,9 +34,11 @@ public class User extends BaseEntity{
     private Boolean active;
 
     @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
+    @JsonIgnore
     private List<BasePost> topics;
 
     @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
+    @JsonIgnore
     private List<BasePost> comments;
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

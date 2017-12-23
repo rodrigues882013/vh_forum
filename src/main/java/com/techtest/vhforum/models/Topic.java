@@ -1,5 +1,8 @@
 package com.techtest.vhforum.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +15,7 @@ public class Topic extends BasePost {
 
 
     @OneToMany(cascade = ALL, mappedBy = "topic", targetEntity = Comment.class)
+    @JsonIgnore
     private List<Comment> comments;
 
     @Column(name = "locked")

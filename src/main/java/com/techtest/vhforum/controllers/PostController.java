@@ -1,6 +1,10 @@
 package com.techtest.vhforum.controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.techtest.vhforum.models.BasePost;
+import com.techtest.vhforum.models.Comment;
+import com.techtest.vhforum.models.Topic;
+import com.techtest.vhforum.models.View;
 import com.techtest.vhforum.services.PostService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +55,11 @@ public class PostController implements BaseController<BasePost> {
     @PostMapping(value = "${api.endpoints.posts}/{id}/vote")
     public ResponseEntity<?> vote(@PathVariable("id") Integer id, @RequestBody Map<String, Integer> payload){
         return service.vote(payload, id);
+    }
+
+    @GetMapping(value = "${api.endpoints.posts}/{id}/comments")
+    public ResponseEntity<List<Comment>> getCommentsByTopic(@PathVariable("id") Integer id) {
+        return service.findComments(id);
     }
 
 }

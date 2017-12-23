@@ -1,5 +1,7 @@
 package com.techtest.vhforum.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,6 +14,7 @@ public class Comment extends BasePost {
 
     @ManyToOne(targetEntity = Topic.class)
     @JoinColumn(name="topic_id")
+    @JsonIgnore
     private Topic topic;
 
     public Comment(){

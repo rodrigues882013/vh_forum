@@ -1,7 +1,11 @@
 package com.techtest.vhforum.services;
 
+import com.techtest.vhforum.dao.CommentDAO;
 import com.techtest.vhforum.dao.PostDAO;
 import com.techtest.vhforum.models.BasePost;
+import com.techtest.vhforum.models.Comment;
+import com.techtest.vhforum.models.Topic;
+import com.techtest.vhforum.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,9 @@ public class PostService {
 
     @Autowired
     private PostDAO postDao;
+
+    @Autowired
+    private CommentDAO commentDao;
 
     @Autowired
     private ActionsService<BasePost, Integer> actionsService;
@@ -47,5 +54,11 @@ public class PostService {
         }
 
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<Comment>> findComments(Integer id){
+        Topic t = (Topic) postDao.findOne(id);
+        List<Comment> comments = commentDao.findCommentsByTopic(t);
+        return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
     }
 }
