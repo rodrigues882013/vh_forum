@@ -83,8 +83,8 @@ public class Topic extends BasePost {
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    public String getCategory() {
-        return name;
+    public Category getCategory() {
+        return category;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

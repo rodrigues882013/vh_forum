@@ -9,7 +9,7 @@ import java.util.Date;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     protected Integer id;
 
@@ -91,7 +91,6 @@ public class BaseEntity {
         BaseEntity entity = (BaseEntity) o;
 
         if (id != null ? !id.equals(entity.id) : entity.id != null) return false;
-        if (name != null ? !name.equals(entity.name) : entity.name != null) return false;
         if (created != null ? !created.equals(entity.created) : entity.created != null) return false;
         return lastUpdate != null ? lastUpdate.equals(entity.lastUpdate) : entity.lastUpdate == null;
     }
@@ -101,7 +100,6 @@ public class BaseEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
         result = 31 * result + (lastUpdate != null ? lastUpdate.hashCode() : 0);
         return result;

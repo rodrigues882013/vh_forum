@@ -1,7 +1,9 @@
 package com.techtest.vhforum.models;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -127,12 +129,10 @@ public class User extends BaseEntity{
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-    public User(String name, Date created, Date lastUpdate,
-                String firstName, String lastName, String email,
+    public User(String firstName, String lastName, String email,
                 String password, String username, Boolean active, 
                 List<BasePost> topics, List<BasePost> comments) {
 
-        super(name);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

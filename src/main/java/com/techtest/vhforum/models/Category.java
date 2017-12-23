@@ -16,14 +16,12 @@ public class Category extends BaseEntity {
     @OneToMany(cascade = ALL, mappedBy = "category", targetEntity = Topic.class)
     private List<Topic> topics;
 
-
     public Category() {
     	super();
     }
 
-    public Category(String name, Category category) {
+    public Category(String name) {
     	this.name = name;
-    	this.category = category;
     }
 
 

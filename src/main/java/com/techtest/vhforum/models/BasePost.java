@@ -1,7 +1,6 @@
 package com.techtest.vhforum.models;
 
 import javax.persistence.*;
-import java.util.Date;
 
 
 @Entity
@@ -28,6 +27,8 @@ public class BasePost extends BaseEntity{
 
     public BasePost() {
         super();
+        this.downVote = 0;
+        this.upVote = 0;
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

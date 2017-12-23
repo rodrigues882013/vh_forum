@@ -42,6 +42,8 @@ public class PostService {
             Integer vote = payload.get("vote");
             if (vote > 0) post.setUpVote();
             else post.setDownVote();
+
+            postDao.save(post);
         }
 
         return new ResponseEntity(HttpStatus.OK);
