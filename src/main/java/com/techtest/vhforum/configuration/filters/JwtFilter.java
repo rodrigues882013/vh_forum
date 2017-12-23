@@ -16,7 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
-public class TokenFilter implements Filter{
+public class JwtFilter implements Filter{
 
     @Autowired
     private JwtTokenUtil jwt;
