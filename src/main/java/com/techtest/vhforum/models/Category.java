@@ -1,5 +1,7 @@
 package com.techtest.vhforum.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Category extends BaseEntity {
     private String name;
 
     @OneToMany(cascade = ALL, mappedBy = "category", targetEntity = Topic.class)
+    @JsonIgnore
     private List<Topic> topics;
 
     public Category() {

@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Thread from '../commons/thread';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {PropTypes} from 'prop-types';
+import * as topicActions from '../../actions/topicActions';
+import _ from 'lodash';
+import TopicsList from "./TopicsList";
+import CategoryList from "./CategoryList";
+
 
 
 
@@ -14,67 +21,61 @@ class Home extends Component {
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     componentDidMount(){
+        this.props.actions.loadTopics();
+        this.props.actions.loadCategories();
         this.props.history.push('/home');
     }
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     render() {
+        const topics = this.props.topics;
+        const categories = this.props.categories;
+
         return (
             <main className="col-sm-12 ml-sm-auto col-md-12 pt-3" role="main">
-              <h1> Home </h1>
+                <h1> Home </h1>
 
-                {/*<section className="row placeholders">*/}
-              <div className="row">
-                <div className="col-sm-8 col-md-8 col-xs-12">
-                  <div className="card">
-                    <div className="card-header">
-                      Last Update
+                <div className="row">
+                    <div className="offset-2 col-sm-8 col-md-8 col-xs-12">
+                        <TopicsList topics={topics} titleGroup={"Last update"}/>
                     </div>
-                    <ul className="list-group list-group-flush">
-                      <Thread title="Quantos anos para comprar minha casa?"/>
-                      <Thread title="Ajuda para teste"/>
-                      <Thread title="Dúvida em estrutura de dados"/>
-                    </ul>
-                  </div>
                 </div>
 
-                <div className="col-sm-4 col-md-4 col-xs-12">
-                  <div className="card">
-                    <div className="card-header">
-                      Popular now
+                <div className="row m-t">
+                    <div className="offset-2 col-sm-8 col-md-8 col-xs-12">
+                        <CategoryList categories={categories}/>
                     </div>
-                    <ul className="list-group list-group-flush">
-                      <Thread title="Quantos anos para comprar?" onlyTitle={true}/>
-                      <Thread title="Ajuda para teste"  onlyTitle={true}/>
-                      <Thread title="Dúvida em estrutura de dados" onlyTitle={true}/>
-                    </ul>
-                  </div>
                 </div>
-              </div>
-
-              <div className="row m-t">
-                <div className="col-sm-8 col-md-8 col-xs-12">
-                  <div className="card">
-                    <div className="card-header">
-                      Foruns
-                    </div>
-                    <ul className="list-group list-group-flush">
-                      <Thread title="Forum 1"/>
-                      <Thread title="Forum 2"/>
-                      <Thread title="Forum 3"/>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-                {/*</section>*/}
-
-
             </main>
 
         );
     }
 }
 
-export default withRouter(Home);
+Home.propTypes = {
+    topics: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    if (!_.isEmpty(state.topics)){
+        return {
+            categories: state.categories,
+            topics: state.topics,
+        };
+    } else {
+
+        return {
+            categories: [],
+            topics: []
+        };
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators(topicActions, dispatch)};
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

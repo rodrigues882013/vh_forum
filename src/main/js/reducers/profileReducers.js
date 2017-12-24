@@ -2,7 +2,7 @@
 import types from '../actions/actionsTypes';
 import initialState from './initialState';
 
-function profileReducers(state = initialState.profile, action){
+export default function profileReducers(state = initialState.profile, action){
 
   let newState = state;
   
@@ -26,5 +26,3 @@ function profileReducers(state = initialState.profile, action){
 
   return newState;
 }
-
-export default profileReducers;

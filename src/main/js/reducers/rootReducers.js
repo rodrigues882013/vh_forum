@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 import profile from './profileReducers';
 import auth from './authReducer';
-import topic from './topicReducer';
+import topics from './topicsReducer';
+import categories from './categoryReducer';
+
 
 
 /**
@@ -16,7 +18,8 @@ import topic from './topicReducer';
 const rootReducer = combineReducers({
     auth,
     profile,
-    topic
+    topics,
+    categories
 });
 
 export default rootReducer;

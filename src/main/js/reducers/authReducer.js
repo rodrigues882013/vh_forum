@@ -1,7 +1,7 @@
 import types from '../actions/actionsTypes';
 import initialState from './initialState';
 
-function authReducer(state = initialState.auth, action){
+export default function authReducer(state = initialState.auth, action){
 
     let newState = state;
 
@@ -18,5 +18,3 @@ function authReducer(state = initialState.auth, action){
 
     return newState;
 }
-
-export default authReducer;

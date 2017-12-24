@@ -8,6 +8,8 @@ import types from './actionsTypes';
 
 export const loadTopicsSuccess = (topics) => ({type: types.LOAD.TOPICS.SUCCESS, topics});
 
+export const loadCategoriesSuccess = (categories) => ({type: types.LOAD.CATEGORIES.SUCCESS, categories});
+
 export const loadTopicSuccess = (topics) => ({type: types.LOAD.TOPICS.SUCCESS, topics});
 
 export const updateTopicSuccess = (topic)=> ({type: types.UPDATE.TOPIC.SUCCESS, topic});
@@ -41,6 +43,22 @@ export function loadTopics() {
             .list()
             .then( response =>{
                 dispatch(loadTopicsSuccess(response.data));
+
+            })
+            .catch(error => console.error(error));
+    };
+
+}
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+export function loadCategories() {
+
+    return function(dispatch){
+        return topicsService
+            .getCategories()
+            .then( response =>{
+                dispatch(loadCategoriesSuccess(response.data));
 
             })
             .catch(error => console.error(error));

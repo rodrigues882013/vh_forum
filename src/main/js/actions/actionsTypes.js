@@ -8,6 +8,10 @@ export default {
         TOPIC: {
             SUCCESS: 'CREATE_TOPIC_SUCCESS',
             FAILED: 'FAILED_TOPIC_SUCCESS'
+        },
+        COMMENT: {
+            SUCCESS: 'CREATE_COMMENT_SUCCESS',
+            FAILED: 'FAILED_COMMENT_SUCCESS'
         }
     },
     LOAD: {
@@ -18,7 +22,13 @@ export default {
             SUCCESS: 'LOAD_TOPIC_SUCCESS'
         },
         TOPICS: {
-            SUCCESS: 'UPDATE_TOPICS_SUCCESS'
+            SUCCESS: 'LOAD_TOPICS_SUCCESS'
+        },
+        CATEGORIES: {
+            SUCCESS: 'LOAD_CATEGORIES_SUCCESS'
+        },
+        COMMENTS: {
+            SUCCESS: 'LOAD_COMMENTS_SUCCESS'
         }
     },
     LOGIN: {
@@ -36,6 +46,9 @@ export default {
         },
         TOPICS: {
             SUCCESS: 'UPDATE_TOPICS_SUCCESS'
+        },
+        COMMENTS: {
+            SUCCESS: 'UPDATE_COMMENTS_SUCCESS'
         }
 
     },

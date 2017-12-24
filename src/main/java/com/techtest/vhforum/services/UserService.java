@@ -48,10 +48,4 @@ public class UserService {
     public ResponseEntity<User> findOne(Integer id){
         return actionsService.findOne(userDao, id);
     }
-
-    public ResponseEntity<List<Topic>> findTopics(Integer id){
-        User u = userDao.findOne(id);
-        List<Topic> topics = topicDao.findTopicByUser(u);
-        return new ResponseEntity<List<Topic>>(topics, HttpStatus.OK);
-    }
 }

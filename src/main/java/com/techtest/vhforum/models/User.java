@@ -33,13 +33,13 @@ public class User extends BaseEntity{
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
+    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = Topic.class)
     @JsonIgnore
-    private List<BasePost> topics;
+    private List<Topic> topics;
 
-    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = BasePost.class)
+    @OneToMany(cascade = ALL, mappedBy = "user", targetEntity = Comment.class)
     @JsonIgnore
-    private List<BasePost> comments;
+    private List<Comment> comments;
 
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -136,7 +136,7 @@ public class User extends BaseEntity{
 
     public User(String firstName, String lastName, String email,
                 String password, String username, Boolean active, 
-                List<BasePost> topics, List<BasePost> comments) {
+                List<Topic> topics, List<Comment> comments) {
 
         this.firstName = firstName;
         this.lastName = lastName;

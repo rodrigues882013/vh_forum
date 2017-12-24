@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {Router, Redirect, Route, Switch} from 'react-router-dom';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -18,6 +18,7 @@ import authService from './services/authService';
 import './helpers/authConfig';
 import 'bootstrap';
 import './index.scss';
+import ErrorBoundary from './components/commons/ErrorBoundary';
 
 
 const history = createBrowserHistory();
@@ -40,22 +41,24 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>
-            <Switch>
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/register" component={ProfilePage}/>
-                <Layout>
-                    <PrivateRoute exact path="/" component={Home}/>
-                    {/*<PrivateRoute exact path="/departments" component={DepartmentsPage}/>*/}
-                    {/*<PrivateRoute exact path="/departments/:id" component={DepartmentDetail}/>*/}
-                    {/*<PrivateRoute exact path="/employees" component={EmployeesPage}/>*/}
-                    {/*<PrivateRoute exact path="/employees/:id" component={EmployeeDetail}/>*/}
-                    <PrivateRoute exact path="/home" component={Home} />
-                    {/*<PrivateRoute exact path="/profile" component={ProfilePage}/>*/}
-                </Layout>
-            </Switch>
-        </Router>
-    </Provider>,
+    <ErrorBoundary>
+        <Provider store={store}>
+            <Router history={history}>
+                <Switch>
+                    <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/register" component={ProfilePage}/>
+                    <Layout>
+                        <PrivateRoute exact path="/" component={Home}/>
+                        {/*<PrivateRoute exact path="/departments" component={DepartmentsPage}/>*/}
+                        {/*<PrivateRoute exact path="/departments/:id" component={DepartmentDetail}/>*/}
+                        {/*<PrivateRoute exact path="/employees" component={EmployeesPage}/>*/}
+                        {/*<PrivateRoute exact path="/employees/:id" component={EmployeeDetail}/>*/}
+                        <PrivateRoute exact path="/home" component={Home} />
+                        {/*<PrivateRoute exact path="/profile" component={ProfilePage}/>*/}
+                    </Layout>
+                </Switch>
+            </Router>
+        </Provider>
+    </ErrorBoundary>,
     app
 );

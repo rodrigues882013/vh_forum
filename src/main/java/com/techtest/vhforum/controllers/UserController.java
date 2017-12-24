@@ -1,7 +1,10 @@
 package com.techtest.vhforum.controllers;
 
+import com.techtest.vhforum.models.Comment;
 import com.techtest.vhforum.models.Topic;
 import com.techtest.vhforum.models.User;
+import com.techtest.vhforum.services.CommentService;
+import com.techtest.vhforum.services.TopicService;
 import com.techtest.vhforum.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,12 @@ public class UserController implements BaseController<User>{
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private TopicService topicService;
+
+    @Autowired
+    private CommentService commentService;
 
     @Override
     @GetMapping(value = "${api.endpoints.users}/{id}")
@@ -47,7 +56,12 @@ public class UserController implements BaseController<User>{
 
     @GetMapping(value = "${api.endpoints.users}/{id}/topics")
     public ResponseEntity<List<Topic>> getTopicsByUserId(@PathVariable("id") Integer id) {
-        return service.findTopics(id);
+        return topicService.findTopics(id);
+    }
+
+    @GetMapping(value = "${api.endpoints.users}/{id}/comment")
+    public ResponseEntity<List<Comment>> getCommentByUserId(@PathVariable("id") Integer id) {
+        return commentService.findCommentsByUserId(id);
     }
 
 }
