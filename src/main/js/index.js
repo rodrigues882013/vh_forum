@@ -13,7 +13,7 @@ import Home from './components/home';
 // import EmployeesPage from './components/employee/EmployeesPage';
 // import EmployeeDetail from './components/employee/EmployeeDetail';
 import LoginPage from "./components/login/LoginPage";
-// import ProfilePage from "./components/profile/ProfilePage";
+import ProfilePage from "./components/profile/ProfilePage";
 import authService from './services/authService';
 import './helpers/authConfig';
 import 'bootstrap';
@@ -44,14 +44,14 @@ ReactDOM.render(
         <Router history={history}>
             <Switch>
                 <Route exact path="/login" component={LoginPage} />
-                {/*<Route exact path="/register" component={ProfilePage}/>*/}
+                <Route exact path="/register" component={ProfilePage}/>
                 <Layout>
                     <PrivateRoute exact path="/" component={Home}/>
                     {/*<PrivateRoute exact path="/departments" component={DepartmentsPage}/>*/}
                     {/*<PrivateRoute exact path="/departments/:id" component={DepartmentDetail}/>*/}
                     {/*<PrivateRoute exact path="/employees" component={EmployeesPage}/>*/}
                     {/*<PrivateRoute exact path="/employees/:id" component={EmployeeDetail}/>*/}
-                    {/*<PrivateRoute exact path="/home" component={Home} />*/}
+                    <PrivateRoute exact path="/home" component={Home} />
                     {/*<PrivateRoute exact path="/profile" component={ProfilePage}/>*/}
                 </Layout>
             </Switch>

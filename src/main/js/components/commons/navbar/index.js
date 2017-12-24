@@ -20,12 +20,6 @@ const Navbar = ({...props}) => {
           <li className="nav-item" >
             <NavLink to="/home" className="nav-link" activeClassName="active">Home</NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/departments" className="nav-link" activeClassName="active">Departments</NavLink>
-          </li>
-          <li className="nav-item" >
-            <NavLink to="/employees" className="nav-link" activeClassName="active">Employees</NavLink>
-          </li>
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item dropdown">

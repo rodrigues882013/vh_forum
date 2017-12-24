@@ -1,8 +1,7 @@
 import {combineReducers} from 'redux';
-
-
-
+import profile from './profileReducers';
 import auth from './authReducer';
+import topic from './topicReducer';
 
 
 /**
@@ -15,7 +14,9 @@ import auth from './authReducer';
  */
 
 const rootReducer = combineReducers({
-    auth
+    auth,
+    profile,
+    topic
 });
 
 export default rootReducer;
