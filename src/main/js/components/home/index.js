@@ -7,6 +7,7 @@ import * as topicActions from '../../actions/topicActions';
 import _ from 'lodash';
 import TopicsList from "./TopicsList";
 import CategoryList from "./CategoryList";
+import Header from '../commons/header';
 
 
 
@@ -34,16 +35,23 @@ class Home extends Component {
 
         return (
             <main className="col-sm-12 ml-sm-auto col-md-12 pt-3" role="main">
-                <h1> Home </h1>
-
                 <div className="row">
-                    <div className="offset-2 col-sm-8 col-md-8 col-xs-12">
+                    <div className="offset-1 col-sm-10 col-md-10 col-xs-12">
+                        <Header
+                            icon={<i className="fa fa-globe fa-4x"/>}
+                            title="Van Hack Test Forum"
+                            text="Some quick example text to build on the card title and make up the bulk of the card's content."/>
+                    </div>
+                </div>
+
+                <div className="row m-t">
+                    <div className="offset-1 col-sm-10 col-md-10 col-xs-12">
                         <TopicsList topics={topics} titleGroup={"Last update"}/>
                     </div>
                 </div>
 
                 <div className="row m-t">
-                    <div className="offset-2 col-sm-8 col-md-8 col-xs-12">
+                    <div className="offset-1 col-sm-10 col-md-10 col-xs-12">
                         <CategoryList categories={categories}/>
                     </div>
                 </div>

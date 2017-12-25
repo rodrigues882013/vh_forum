@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 
 const Thread = ({topic}) => {
@@ -15,6 +17,10 @@ const Thread = ({topic}) => {
             <small>Criado por {topic.user.username}  {topic.created} </small>
         </NavLink>
     )
+};
+
+Thread.propTypes = {
+    topic: PropTypes.object.isRequired
 };
 
 export default Thread;

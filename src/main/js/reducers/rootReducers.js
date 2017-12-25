@@ -3,6 +3,7 @@ import profile from './profileReducers';
 import auth from './authReducer';
 import topics from './topicsReducer';
 import categories from './categoryReducer';
+import comments from './commentReducers';
 
 
 
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     auth,
     profile,
     topics,
-    categories
+    categories,
+    comments
 });
 
 export default rootReducer;

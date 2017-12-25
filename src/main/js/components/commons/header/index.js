@@ -4,16 +4,24 @@ import PropTypes from 'prop-types';
 
 
 
-const Header = ({...props}) => {
-  return (
-    <nav>
-      <Link to="/" activeClassName="active">Home</Link>
-      {" | "}
-      <Link to="/cats" activeClassName="active">Cats</Link>
-      {" | "}
-      <Link to="/about" activeClassName="active">About</Link>
-    </nav>
-  );
+const Header = ({title, text=null, icon}) => {
+    return (
+        <div className="card">
+            <div className="card-body">
+                <div className="row">
+                    <div className="col-md-1">
+                        {icon}
+                    </div>
+
+                    <div className="col-md-9">
+                        <h4 className="card-title">{title}</h4>
+                        <p className="card-text">{text}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    );
 };
 
 export default Header;

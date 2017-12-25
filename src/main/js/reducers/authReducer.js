@@ -14,6 +14,9 @@ export default function authReducer(state = initialState.auth, action){
         case types.LOGOFF.SUCCESS:
             newState = !!localStorage.jwt;
             break;
+
+        default:
+            return state;
     }
 
     return newState;

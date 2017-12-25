@@ -12,6 +12,9 @@ export default function categoryReducer(state = initialState.categories, action)
             newState = action.categories;
             break;
 
+        default:
+            return state;
+
     }
 
     return newState;

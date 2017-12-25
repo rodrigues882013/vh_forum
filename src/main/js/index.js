@@ -19,6 +19,7 @@ import './helpers/authConfig';
 import 'bootstrap';
 import './index.scss';
 import ErrorBoundary from './components/commons/ErrorBoundary';
+import TopicPage from "./components/topic/TopicPage";
 
 
 const history = createBrowserHistory();
@@ -50,7 +51,7 @@ ReactDOM.render(
                     <Layout>
                         <PrivateRoute exact path="/" component={Home}/>
                         {/*<PrivateRoute exact path="/departments" component={DepartmentsPage}/>*/}
-                        {/*<PrivateRoute exact path="/departments/:id" component={DepartmentDetail}/>*/}
+                        <PrivateRoute exact path="/topic/:id" component={TopicPage}/>
                         {/*<PrivateRoute exact path="/employees" component={EmployeesPage}/>*/}
                         {/*<PrivateRoute exact path="/employees/:id" component={EmployeeDetail}/>*/}
                         <PrivateRoute exact path="/home" component={Home} />

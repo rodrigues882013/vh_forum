@@ -20,9 +20,12 @@ export default function commentReducer(state = initialState.comments, action){
             newState = action.comments;
             break;
 
-        case types.CREATE.COMMENTS.FAILED:
+        case types.CREATE.COMMENT.FAILED:
             newState = state;
             break;
+
+        default:
+            return state;
 
     }
 

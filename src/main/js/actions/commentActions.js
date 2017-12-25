@@ -35,14 +35,10 @@ export function loadComment(id) {
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 export function loadComments(topicId) {
-
     return function(dispatch){
         return commentService
             .list(topicId)
-            .then( response =>{
-                dispatch(loadCommentsSuccess(response.data));
-
-            })
+            .then( response => dispatch(loadCommentsSuccess(response.data)))
             .catch(error => console.error(error));
     };
 

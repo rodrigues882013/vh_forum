@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Thread from '../commons/thread';
 
 const TopicsList = ({topics, titleGroup}) => {
-    const el = topics.map(t => <Thread topic={t}/>);
+    const el = topics.map(t => <Thread key={t.id} topic={t}/>);
 
     return (
         <div className="card">

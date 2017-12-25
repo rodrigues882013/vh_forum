@@ -24,6 +24,9 @@ export default function topicReducer(state = initialState.topics, action){
             newState = state;
             break;
 
+        default:
+            return state;
+
     }
 
     return newState;

@@ -6,8 +6,11 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+$gray_bg: #f3f3f4;
+
 body {
   padding-top: 3.5rem;
+  background-color: $gray_bg;
 }
 
 /*
@@ -79,4 +82,12 @@ h1 {
 .thumb{
   width: 50px;
   height: 50px;
+}
+
+.comment-entry{
+  border-bottom: 1px solid $gray_bg;
+}
+
+.font-body-comment{
+  font-size: 12px;
 }
